@@ -1,7 +1,7 @@
 {
-  "name": "my-webpack-project",
+  "name": "Tic-Tac-Toe-Extension",
   "displayName": "tic-tac-toe",
-  "description": "My webpack project",
+  "description": "A simple tic tac toe game in Visual Studio Code",
   "version": "1.0.0",
   "engines": {
     "vscode": "^1.76.0"
@@ -12,16 +12,11 @@
   "activationEvents": [],
   "main": "./out/extension/extension.js",
   "contributes": {
-    "customEditors": [
+    "commands":[
       {
-        "viewType": "tic-tac-toe.Tic-Tac-Toe",
-        "displayName": "Tic Tac Toe",
-        "selector": [
-          {
-            "filenamePattern": "*.ttt.json"
-          }
-        ],
-        "priority": "default"
+        "command": "tic-tac-toe.Start",
+        "title": "Tic Tac Toe",
+        "category": "Games"
       }
     ]
   },
