@@ -1,8 +1,8 @@
 {
-  "name": "tic-tac-toe",
+  "name": "my-webpack-project",
   "displayName": "tic-tac-toe",
-  "description": "Simple game extension.",
-  "version": "0.0.1",
+  "description": "My webpack project",
+  "version": "1.0.0",
   "engines": {
     "vscode": "^1.76.0"
   },
@@ -26,13 +26,23 @@
     ]
   },
   "scripts": {
-    "vscode:prepublish": "npm run compile",
-    "compile": "tsc -p ./",
-    "watch": "tsc -watch -p ./"
+    "vscode:prepublish": "npm run compile-extension",
+    "compile-extension": "tsc -p ./",
+    "compile-viewer": "npm run build:dev",
+    "watch": "webpack --watch",
+    "build": "webpack --mode=production --node-env=production",
+    "build:dev": "webpack --mode=development",
+    "build:prod": "webpack --mode=production --node-env=production"
   },
   "devDependencies": {
     "@types/node": "16.x",
     "@types/vscode": "^1.76.0",
-    "typescript": "^4.9.5"
+    "@webpack-cli/generators": "^3.0.1",
+    "css-loader": "^6.7.3",
+    "style-loader": "^3.3.2",
+    "ts-loader": "^9.4.2",
+    "typescript": "^4.9.5",
+    "webpack": "^5.76.2",
+    "webpack-cli": "^5.0.1"
   }
 }
