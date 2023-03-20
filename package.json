@@ -12,10 +12,16 @@
   "activationEvents": [],
   "main": "./out/extension.js",
   "contributes": {
-    "commands": [
+    "customEditors": [
       {
-        "command": "tic-tac-toe.helloWorld",
-        "title": "Hello World"
+        "viewType": "tic-tac-toe.Tic-Tac-Toe",
+        "displayName": "Tic Tac Toe",
+        "selector": [
+          {
+            "filenamePattern": "*.ttt.json"
+          }
+        ],
+        "priority": "option"
       }
     ]
   },
