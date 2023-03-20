@@ -10,9 +10,10 @@ const stylesHandler = 'style-loader';
 
 
 const config = {
-    entry: './src/viewer/index.ts',
+    entry: './src/viewer/index.tsx',
     output: {
         path: path.resolve(__dirname, 'out/viewer/'),
+        filename: "viewer.js"
     },
     plugins: [
         // Add your plugins here
