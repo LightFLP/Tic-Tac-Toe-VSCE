@@ -21,11 +21,11 @@ body {
   }
   
   .square {
-    background: #fff;
-    border: 2px solid #999;
+    background: var(--vscode-editor-background);
+    border: 2px solid var(--vscode-focusBorder);
     float: left;
     font-size: 92px;
-    color: rgb(7, 56, 141);
+    color: var(--vscode-foreground);
     font-weight: bold;
     line-height: 128px;
     height: 128px;
