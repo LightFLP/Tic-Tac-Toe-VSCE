@@ -11,10 +11,20 @@
 			"presentation": {
 				"reveal": "never"
 			},
+			"group": "build",
+			"label": "npm: watch",
+			"detail": "webpack --watch"
+		},
+		{
+			"type": "npm",
+			"script": "compile",
 			"group": {
 				"kind": "build",
 				"isDefault": true
-			}
+			},
+			"problemMatcher": [],
+			"label": "npm: compile",
+			"detail": "npm run compile-extension && npm run compile-viewer -- --mode=development --env development"
 		}
 	]
 }

@@ -12,17 +12,13 @@ const stylesHandler = 'style-loader';
 const config = {
     entry: './src/viewer/index.tsx',
     output: {
-        path: path.resolve(__dirname, 'out/viewer/'),
+        path: path.resolve(__dirname, 'out/viewer'),
         filename: "viewer.js"
     },
-    plugins: [
-        // Add your plugins here
-        // Learn more about plugins from https://webpack.js.org/configuration/plugins/
-    ],
     module: {
         rules: [
             {
-                test: /\.(ts|tsx)$/i,
+                test: /\.tsx$/,
                 loader: 'ts-loader',
                 options: {
                     transpileOnly: true
@@ -43,7 +39,7 @@ const config = {
         ],
     },
     resolve: {
-        extensions: ['.tsx', '.ts', '.jsx', '.js', '...'],
+        extensions: ['.tsx', '.ts', '.js'],
     },
 };
 

@@ -10,7 +10,7 @@
     "Other"
   ],
   "activationEvents": [],
-  "main": "./out/extension.js",
+  "main": "./out/extension/extension.js",
   "contributes": {
     "customEditors": [
       {
@@ -21,18 +21,17 @@
             "filenamePattern": "*.ttt.json"
           }
         ],
-        "priority": "option"
+        "priority": "default"
       }
     ]
   },
   "scripts": {
-    "vscode:prepublish": "npm run compile-extension",
+    "package": "tic-tac-toe-package",
+    "vscode:prepublish": "npm run compile-extension && npm run compile-viewer -- --mode=production --env production",
+    "compile": "npm run compile-extension && npm run compile-viewer -- --mode=development --env development",
     "compile-extension": "tsc -p ./",
-    "compile-viewer": "npm run build:dev",
-    "watch": "webpack --watch",
-    "build": "webpack --mode=production --node-env=production",
-    "build:dev": "webpack --mode=development",
-    "build:prod": "webpack --mode=production --node-env=production"
+    "compile-viewer": "webpack",
+    "watch-viewer": "webpack --mode=development --env development --progress --watch"
   },
   "devDependencies": {
     "@types/node": "16.x",

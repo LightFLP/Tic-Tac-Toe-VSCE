@@ -71,8 +71,8 @@ class TicTacToeEditorProvider implements vscode.CustomTextEditorProvider {
 	 */
 	private getHtmlForWebview(webview: vscode.Webview): string {
 		// // Local path to script and css for the webview
-		// const scriptUri = webview.asWebviewUri(vscode.Uri.joinPath(
-		// 	this.context.extensionUri, 'media', 'catScratch.js'));
+		const scriptUri = webview.asWebviewUri(vscode.Uri.joinPath(
+			this.context.extensionUri, 'out', 'viewer', 'viewer.js'));
 
 		// const styleResetUri = webview.asWebviewUri(vscode.Uri.joinPath(
 		// 	this.context.extensionUri, 'media', 'reset.css'));
@@ -80,33 +80,35 @@ class TicTacToeEditorProvider implements vscode.CustomTextEditorProvider {
 		// const styleVSCodeUri = webview.asWebviewUri(vscode.Uri.joinPath(
 		// 	this.context.extensionUri, 'media', 'vscode.css'));
 
-		// const styleMainUri = webview.asWebviewUri(vscode.Uri.joinPath(
-		// 	this.context.extensionUri, 'media', 'catScratch.css'));
+		const styleUri = webview.asWebviewUri(vscode.Uri.joinPath(
+			this.context.extensionUri, 'media', 'style.css'));
 
 		// Use a nonce to whitelist which scripts can be run
 		const nonce = this.getNonce();
 
 		return /* html */`
-			<!DOCTYPE html>
-			<html lang="en">
-			<head>
-				<meta charset="UTF-8">
-				<!--
-				Use a content security policy to only allow loading images from https or from our extension directory,
-				and only allow scripts that have a specific nonce.
-				-->
-				<meta http-equiv="Content-Security-Policy" content="default-src 'none'; img-src ${webview.cspSource}; style-src ${webview.cspSource}; script-src 'nonce-${nonce}';">
-				<meta name="viewport" content="width=device-width, initial-scale=1.0">
-				<title>Tic Tac Toe</title>
-			</head>
-			<body>
-				<div class>
-				<iframe src='https://gfycat.com/ifr/BestMeagerHoki' frameborder='0' scrolling='no' allowfullscreen width='640' height='335'></iframe>
-				<p> <a href="https://gfycat.com/bestmeagerhoki">via Gfycat</a></p>
-				</div>
-				
-			</body>
-			</html>`;
+		<!DOCTYPE html>
+		<html lang="en">
+		<head>
+			<meta charset="UTF-8">
+
+			<!--
+			Use a content security policy to only allow loading images from https or from our extension directory,
+			and only allow scripts that have a specific nonce.
+			-->
+			<!--<meta http-equiv="Content-Security-Policy" content="default-src 'none'; img-src ${webview.cspSource}; style-src ${webview.cspSource}; script-src 'nonce-${nonce}';">
+			-->
+			<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+			<link href="${styleUri}" rel="stylesheet" />
+
+			<title>TicTacToe</title>
+		</head>
+		<body>
+			<div id='root'/>
+			<script nonce="${nonce}" src="${scriptUri}"></script>
+		</body>
+		</html>`;
 	}
 
 	getNonce() {
